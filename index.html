@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d5a73" />
+  <title>Sounding</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2292%22%3E%F0%9F%8C%8A%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="preload" as="image" type="image/avif" href="assets/zone-0.avif" fetchpriority="high" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- One continuous body of water. Every layer is driven by parallax.js:
+       generated plates crossfade between depth zones, a shader draws the
+       caustics and god rays over them, particles rush past on a dive, and
+       each layer drifts with the pointer by a different amount. -->
+  <div id="ocean" aria-hidden="true">
+    <div class="ocean-bg"></div>
+    <div class="ocean-plate" data-plate="0"></div>
+    <div class="ocean-plate" data-plate="1"></div>
+    <div class="ocean-plate" data-plate="2"></div>
+    <div class="ocean-plate" data-plate="3"></div>
+    <div class="ocean-plate" data-plate="4"></div>
+    <canvas id="water"></canvas>
+    <canvas id="particles"></canvas>
+  </div>
+
+  <header class="brand">
+    <h1 translate="no">Sounding</h1>
+    <p id="zone-readout"></p>
+  </header>
+
+  <main id="stage"></main>
+
+  <div id="console">
+    <div class="surface-copy">
+      <p class="eyebrow">The surface is calm</p>
+      <h2>Don’t know its name? Describe it.</h2>
+    </div>
+
+    <form id="search-form" role="search">
+      <label class="visually-hidden" for="prompt-input">Describe a marine animal</label>
+      <input
+        id="prompt-input"
+        name="prompt"
+        type="text"
+        placeholder="Describe a marine animal…"
+        autocomplete="off"
+        enterkeyhint="go"
+        required
+      />
+      <button type="submit" id="submit-btn">Dive</button>
+    </form>
+    <p id="status" aria-live="polite"></p>
+
+    <div class="prompt-chips">
+      <button type="button" class="prompt-chip">that spiky orange fish that lives in anemones</button>
+      <button type="button" class="prompt-chip">blob with a built-in fishing lure</button>
+      <button type="button" class="prompt-chip">huge gentle shark covered in spots</button>
+    </div>
+  </div>
+
+  <nav id="depth-gauge" aria-label="Your dive" hidden>
+    <ol></ol>
+  </nav>
+
+  <p id="announcer" class="visually-hidden" aria-live="polite"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="parallax.js"></script>
+  <script src="app.js"></script>
+  <script type="module" src="water.js"></script>
+</body>
+</html>

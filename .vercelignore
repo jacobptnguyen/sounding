@@ -1,0 +1,14 @@
+# Vercel REPLACES .gitignore with this file rather than merging the two, so
+# every exclusion has to be repeated here. Dropping .env* from this list is
+# how an API key ends up inside a deployment bundle — keep it first.
+.env
+.env.*
+
+node_modules/
+.vercel
+.git
+
+# Local-only. Vercel never executes these, but without this they'd be served
+# as readable static files from the CDN.
+dev-server.js
+test-identify.js
