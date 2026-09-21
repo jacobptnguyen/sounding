@@ -2,7 +2,7 @@
 
 Describe a sea creature in your own words, however vague or misspelled, and dive down to find it: a real photo and description, pulled from iNaturalist.
 
-## [▶ Live Demo](https://YOUR-DEPLOYMENT.vercel.app)
+## [▶ Live Demo](https://sounding-two.vercel.app/)
 
 ![Sounding's home screen: sunlit water with a search bar and example descriptions below it](assets/screenshot.jpg)
 
