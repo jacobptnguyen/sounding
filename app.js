@@ -169,6 +169,8 @@ async function identifyTaxon(prompt) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ prompt }),
   });
+  // The firewall's rate limit answers before our function runs, without a JSON body.
+  if (identifyRes.status === 429) throw new DiveError("Too many dives in a row. Wait a minute and try again.");
   const identifyData = await identifyRes.json();
   if (!identifyRes.ok) throw new DiveError(identifyData.error || "Something went wrong.");
 
